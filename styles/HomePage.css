@@ -1,0 +1,65 @@
+.landing-page {
+  background-image: url('/public/images/back4.jpg');
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px; /* Adjust max-width as needed */
+  text-align: center;
+}
+
+.welcome-section {
+  text-align: left;
+}
+
+.aim-description {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/*.prediction-button {
+  background-color: #b33b72;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;  
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 90px;
+  max-width: 100px;
+}
+
+.prediction-button:hover {
+  background-color: #32a7be;
+}*/
+.prediction-box {
+  display: flex;
+  align-items: center;
+}
+
+.prediction-link {
+  margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.prediction-button-small {
+  background-color: #b33b72;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px; /* Adjust padding to make button smaller */
+  font-size: 14px; /* Adjust font size */
+  cursor: pointer;
+  width: auto; /* Set button width to auto */
+}
+
+.prediction-button-small:hover {
+  background-color: #5a32be;
+}
+

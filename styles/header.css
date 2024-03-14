@@ -1,0 +1,12 @@
+.custom-logo {
+  width: 40px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px;
+}
+
+.navbar{
+  background-color: #000000;
+
+
+  /*background: #0009;*/
+}
