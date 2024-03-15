@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; 
-import axios from 'axios'; // Import Axios for making API requests
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import Layout from '../components/Layout/Layout';
 
 const Login = () => {
   const [emailOrPhone, setEmailOrPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/login", { // Assuming the API endpoint is '/api/login'
+      const res = await axios.post("https://cureconnect-backend.onrender.com/api/v1/auth/login", { // Assuming the API endpoint is '/api/login'
         emailOrPhone,
         password
       });
-      console.log('Login response:', res.data); // Log the response from the API
-      // Reset form fields
-      setEmailOrPhone('');
-      setPassword('');
+
+      if (res && res.data.success) {
+        // Redirect user to dashboard or home page upon successful login
+        window.location.href = '/dashboard'; // Change the URL as needed
+      } else {
+        setError('Invalid email/phone or password. Please try again.'); // Set error message for invalid login
+      }
     } catch (error) {
-      console.error('Login error:', error); // Log any errors that occur during the API call
+      console.error('Login error:', error);
+      setError('Something went wrong. Please try again later.'); // Set error message for general error
     }
   };
 
