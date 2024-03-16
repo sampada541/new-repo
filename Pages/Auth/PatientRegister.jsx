@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import Layout from "../components/Layout/Layout";
+import Layout from "../../Components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../styles/AuthStyles.css";
+import "../../Styles/AuthStyles.css";
 
 import { RingLoader } from "react-spinners";
 
-const Register = () => {
+const PatientRegister = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -269,4 +269,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default PatientRegister;

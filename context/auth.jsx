@@ -4,7 +4,7 @@ import axios from "axios";
 const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
-    patient: null,
+    user: null,
     token: "",
   });
 
@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
       const parseData = JSON.parse(data);
       setAuth({
         ...auth,
-        patient: parseData.patient,
+        user: parseData.user,
         token: parseData.token,
       });
     }

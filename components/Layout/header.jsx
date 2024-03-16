@@ -1,26 +1,24 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import { NavDropdown } from "react-bootstrap";
+import { useAuth } from "../../Context/Auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAuth } from "../../context/auth";
+import "../../Styles/Header.css";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
-
   const handleLogout = () => {
     setAuth({
       ...auth,
-      user: null,
+      patient: null,
       token: "",
     });
     localStorage.removeItem("auth");
     toast.success("Logout Successfully");
   };
-
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -35,40 +33,46 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link to="/" className="navbar-brand">
-              ⚕ CureConnect
+              🛒 SynthGad
             </Link>
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink to="/" className="nav-link">
+                <NavLink to="/" className="nav-link ">
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item d-flex align-items-center">
-                <form className="d-flex">
-                  <input
-                    className="form-control form-control-sm me-1"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
-                  <button
-                    className="btn btn-outline-success btn-sm"
-                    type="submit"
-                  >
-                    Search
-                  </button>
-                </form>
-              </li>
-              {!auth || !auth.patient ? (
+
+              {!auth?.patient ? (
                 <>
-                  <NavDropdown title="Register" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/patient-register">
-                      As Patient
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
-                      As Doctor
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                  <li className="nav-item dropdown">
+                    <NavLink
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      style={{ border: "none" }}
+                    >
+                      Register
+                    </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <NavLink
+                          to="/patient-register"
+                          className="dropdown-item"
+                        >
+                          Register as Patient
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/patient-register"
+                          className="dropdown-item"
+                        >
+                          Register as Doctor
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
                   <li className="nav-item">
                     <NavLink to="/login" className="nav-link">
                       Login
@@ -80,38 +84,22 @@ const Header = () => {
                   <li className="nav-item dropdown">
                     <NavLink
                       className="nav-link dropdown-toggle"
-                      to="#"
+                      href="#"
                       role="button"
                       data-bs-toggle="dropdown"
                       style={{ border: "none" }}
                     >
-                      {auth.patient.name}
+                      {auth?.patient?.name}
                     </NavLink>
                     <ul className="dropdown-menu">
                       <li>
                         <NavLink
                           to={`/dashboard/${
-                            auth.patient.role === 1 ? "doctor" : "user"
+                            auth?.patient?.role === 1 ? "admin" : "user"
                           }`}
                           className="dropdown-item"
                         >
                           Dashboard
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to="/schedule-appointment"
-                          className="dropdown-item"
-                        >
-                          Schedule Appointment
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to="/predict-disease"
-                          className="dropdown-item"
-                        >
-                          Predict Disease
                         </NavLink>
                       </li>
                       <li>

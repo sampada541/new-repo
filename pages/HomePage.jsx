@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "./../components/Layout/Layout";
-import Carousel from 'react-bootstrap/Carousel';
-import Card from 'react-bootstrap/Card';
+import Layout from "../Components/Layout/Layout";
+import Carousel from "react-bootstrap/Carousel";
+import Card from "react-bootstrap/Card";
 import { NavLink } from "react-router-dom";
 
 const HomePage = () => {
@@ -10,7 +10,9 @@ const HomePage = () => {
       <div className="container">
         <div className="row">
           <div className="col">
-            <h1 className="text-center mt-5" style={{ color: "#007bff" }}>Welcome To CureConnect</h1>
+            <h1 className="text-center mt-5" style={{ color: "#007bff" }}>
+              Welcome To CureConnect
+            </h1>
           </div>
         </div>
         <div className="row">
@@ -45,8 +47,12 @@ const HomePage = () => {
                   {/* Add your service details here */}
                   Service 1
                 </Card.Text>
-                <NavLink to="/predict" className="btn btn-primary me-2">Predict Disease</NavLink>
-                <NavLink to="/schedule" className="btn btn-primary">Schedule Appointment</NavLink>
+                <NavLink to="/predict" className="btn btn-primary me-2">
+                  Predict Disease
+                </NavLink>
+                <NavLink to="/schedule" className="btn btn-primary">
+                  Schedule Appointment
+                </NavLink>
               </Card.Body>
             </Card>
           </div>
@@ -58,8 +64,12 @@ const HomePage = () => {
                   {/* Add your service details here */}
                   Service 2
                 </Card.Text>
-                <NavLink to="/predict" className="btn btn-primary me-2">Predict Disease</NavLink>
-                <NavLink to="/schedule" className="btn btn-primary">Schedule Appointment</NavLink>
+                <NavLink to="/predict" className="btn btn-primary me-2">
+                  Predict Disease
+                </NavLink>
+                <NavLink to="/schedule" className="btn btn-primary">
+                  Schedule Appointment
+                </NavLink>
               </Card.Body>
             </Card>
           </div>
